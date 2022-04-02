@@ -1,54 +1,75 @@
-%!TEX TS-program = xelatex
-%!TEX encoding = UTF-8 Unicode
+% DOC OPTIONS
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true, linkcolor=blue, filecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{array}
+\usepackage{titlesec}
+%\usepackage[portuguese]{babel}
+\usepackage{multirow}
+\usepackage{fontspec}
+\pagenumbering{gobble}
 
-\documentclass[11pt, a4paper]{article}
-\usepackage{fontspec} 
+% HEADER
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{2pt}
+\pagestyle{fancy}
 
-% DOCUMENT LAYOUT
-\usepackage[margin=1.2in]{geometry} 
-\setlength\parindent{0in}
+\lhead
+{
+	\textbf{\Huge Name}
+}
 
-% fix for pandoc 1.14
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\rhead
+{
+	\textbf{\today}
+}
 
-% Reduce spacing in itemize, enumerate and titles
-\usepackage{multicol}
-\usepackage{enumitem}
-\setenumerate{nolistsep}
-\setitemize{nolistsep}
+% FOOTER
+\renewcommand{\footrulewidth}{1pt}
 
-% COLOR
-\usepackage{hyperref}
+% SECTIONS
+\titleformat{\section}[frame]{}{}{10pt}{\Large\bf\filcenter}
+%\titleformat{\section}{}{}{10pt}{\Large\bf\filcenter}[{\titlerule[1pt]}]
 
-% FONTS
-\usepackage{xunicode}
-\usepackage{xltxtra}
-\defaultfontfeatures{Mapping=tex-text} % converts LaTeX specials (quotes'' --- dashes etc.) to unicode
-% \setromanfont[Ligatures={Common}, Numbers={OldStyle}]{Palatino}
-% \setmonofont[Scale=1.0]{Monaco} 
-% \setsansfont[Scale=1.0]{Optima Regular} 
+% MACROS
+\newcommand{\timeentry}[4]
+{
+	\vspace{10pt}
+	\begin{tabular}{ c | l }
+		\multirow{2}{0.2\linewidth}{\textsc{#1}} & {\bf#2} \\
+						 & \textit{#3} \footnotesize{#4}
+	\end{tabular}
+	\vspace{10pt}
+}
 
-% HEADINGS and TITLES
-\usepackage{sectsty}
-\usepackage[normalem]{ulem}
-\sectionfont{\sffamily\mdseries\large\underline} % Underlines headings
-\setcounter{secnumdepth}{-1} % Removes the numbers before sections
-\subsectionfont{\rmfamily\mdseries\scshape\normalsize}
-\subsubsectionfont{\rmfamily\bfseries\upshape\normalsize}
+\newcommand{\simplentry}[2]
+{
+	\vspace{10pt}
+	\begin{tabular}{m{0.2\linewidth} | m{0.8\linewidth}}
+		\textsc{#1} & #2
+	\end{tabular}
+	\vspace{10pt}
+}
 
-\usepackage{titling}
-\setlength{\droptitle}{-90pt} % The negative number moves the title closer to the top of the page
-\title{$title$} % name $if(title)$$title$$endif$
-\date{$if(date)$$date$\\$endif$} % Leave blank to remove the date
-\author{$if(website)$$website$\\\\$endif$
-$street$ \textbar{} $city$, $postcode$\\ %Put your address here
-$phone$ \textbar{} $email$ } % put your contact information here
-
-% BEGIN DOCUMENT
+% DOCUMENT
 \begin{document}
-\maketitle
-\begin{raggedright}
-$body$
-\end{raggedright}
+
+	\section{Contact}
+	{\fontspec{FiraCode Nerd Font}} E-mail: \href{mailto:your@email.com}{your@email.com}
+	\\
+	{\fontspec{FiraCode Nerd Font}} Telemóvel: +000 000 000 000
+	\\
+	{\fontspec{FiraCode Nerd Font}爵} Website: \href{https://yourwebsite.com}{yourwebsite.com}
+
+	\section{Education}
+	\timeentry{2000-Now}{Course 2}{Institution}{}
+	\\
+	\timeentry{1970-2000}{Course 1}{Institution}{}
+
+	\section{Languages}
+	\simplentry{Human}{English(native)}
+	\\
+	\simplentry{Machine}{Python, HTML, CSS, etc...}
+
 \end{document}

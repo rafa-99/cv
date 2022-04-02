@@ -1,9 +1,13 @@
-OUTPUT = cv.pdf
+OUTPUT = *.log *.out *.aux *.pdf
 TEMPLATE = template.tex
-INFO = cv.md
+CV = cv.tex
+COMPILER = xelatex
 
-all: clean
-	pandoc -s -f markdown-auto_identifiers ${INFO} -o ${OUTPUT} --template=${TEMPLATE} --pdf-engine=xelatex
+all: clean cv.tex
+	${COMPILER} ${CV}
 
 clean:
 	rm -rf ${OUTPUT}
+
+cv.tex:
+	cp ${TEMPLATE} ${CV}

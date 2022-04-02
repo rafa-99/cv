@@ -1,0 +1,8 @@
+# LaTeX Generated Files
+*.aux
+*.log
+*.pdf
+*.out
+
+# Personal CV
+cv.tex
