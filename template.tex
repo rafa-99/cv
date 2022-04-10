@@ -1,23 +1,36 @@
 % DOC OPTIONS
+%% Document type and font size
 \documentclass[a4paper,12pt]{article}
+%% Document encoding
 \usepackage[utf8]{inputenc}
+%% Geometry and margins
 \usepackage[margin=1in]{geometry}
+%% Urls style
 \usepackage[colorlinks=true, linkcolor=blue, filecolor=blue, urlcolor=blue]{hyperref}
+%% Tables formatting and alignment
 \usepackage{array}
+%% Format section titles
 \usepackage{titlesec}
-%\usepackage[portuguese]{babel}
+%% Format LaTeX logo with space after
+\usepackage{xspace}
+%% Allow multirow tables
 \usepackage{multirow}
+%% Using different font for the glyphs and emojis
 \usepackage{fontspec}
-\pagenumbering{gobble}
+%% No hyphenation between lines
+\usepackage[none]{hyphenat}
+%% Document Language
+%%%\usepackage[portuguese]{babel}
 
 % HEADER
 \usepackage{fancyhdr}
 \renewcommand{\headrulewidth}{2pt}
-\pagestyle{fancy}
 
+% ALL PAGES STYLES
+\pagestyle{fancy}
 \lhead
 {
-	\textbf{\Huge Name}
+	\textsc{\small Curriculum Vitae}
 }
 
 \rhead
@@ -25,36 +38,55 @@
 	\textbf{\today}
 }
 
+% FIRST PAGE STYLE
+\fancypagestyle{firstpage}
+{
+	\pagestyle{fancy}
+	\lhead
+	{
+		\textsc{\small Curriculum Vitae}
+		\\
+		\textbf{\Huge Your Name}
+	}
+
+	\rhead
+	{
+		\textbf{\today}
+		\\
+		\textsc{{\fontspec{FiraCode Nerd Font}} Your City, Your Country}
+	}
+}
+
 % FOOTER
 \renewcommand{\footrulewidth}{1pt}
+\pagenumbering{gobble}
 
-% SECTIONS
+% SECTIONS STYLE
 \titleformat{\section}[frame]{}{}{10pt}{\Large\bf\filcenter}
 %\titleformat{\section}{}{}{10pt}{\Large\bf\filcenter}[{\titlerule[1pt]}]
 
 % MACROS
+\newcommand{\latex}{\LaTeX\xspace}
+
 \newcommand{\timeentry}[4]
 {
-	\vspace{10pt}
-	\begin{tabular}{ c | l }
+	\begin{tabular}{ c | l  }
 		\multirow{2}{0.2\linewidth}{\textsc{#1}} & {\bf#2} \\
 						 & \textit{#3} \footnotesize{#4}
 	\end{tabular}
-	\vspace{10pt}
 }
 
-\newcommand{\simplentry}[2]
+\newcommand{\simpleentry}[2]
 {
-	\vspace{10pt}
-	\begin{tabular}{m{0.2\linewidth} | m{0.8\linewidth}}
+	\begin{tabular}{m{0.2\linewidth} | m{0.75\linewidth} }
 		\textsc{#1} & #2
 	\end{tabular}
-	\vspace{10pt}
 }
 
 % DOCUMENT
 \begin{document}
 
+	\thispagestyle{firstpage}
 	\section{Contact}
 	{\fontspec{FiraCode Nerd Font}} E-mail: \href{mailto:your@email.com}{your@email.com}
 	\\
@@ -68,8 +100,24 @@
 	\timeentry{1970-2000}{Course 1}{Institution}{}
 
 	\section{Languages}
-	\simplentry{Human}{English(native)}
+	\simpleentry{Human}{English}
 	\\
-	\simplentry{Machine}{Python, HTML, CSS, etc...}
+	\simpleentry{Machine}{Python, HTML, CSS, {\latex}, etc...}
+
+	\section{Skills}
+	Some simple text explaining some of your skills like {\latex}.
+
+	\newpage
+	\section{Hobbies}
+	Describe your hobbies or put the in a entry like below.
+	\\
+	\\
+	\timeentry{1970-Now}{Some hobby}{In this location}{with this person}
+
+	\section{Courses}
+	\timeentry{1970}{Some Course}{At this location}{with this trainer}
+
+	\section{Misc}
+	\timeentry{1970-2000}{Driving License}{At this school}{with this instructor}
 
 \end{document}
