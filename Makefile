@@ -1,4 +1,4 @@
-OUTPUT = *.log *.out *.aux *.pdf
+OUTPUT = *.log *.out *.aux cv.pdf
 TEMPLATE = template.tex
 CV = cv.tex
 COMPILER = xelatex
