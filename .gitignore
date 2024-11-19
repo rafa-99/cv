@@ -2,7 +2,15 @@
 *.aux
 *.log
 *.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
 
 # Personal CV
 cv.tex
 cv.pdf
+
+# Images
+images/*.jpg
+images/*.jpeg
