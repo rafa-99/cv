@@ -1,123 +1,145 @@
-% DOC OPTIONS
-%% Document type and font size
-\documentclass[a4paper,12pt]{article}
-%% Document encoding
-\usepackage[utf8]{inputenc}
-%% Geometry and margins
-\usepackage[margin=1in]{geometry}
-%% Urls style
-\usepackage[colorlinks=true, linkcolor=blue, filecolor=blue, urlcolor=blue]{hyperref}
-%% Tables formatting and alignment
-\usepackage{array}
-%% Format section titles
-\usepackage{titlesec}
-%% Format LaTeX logo with space after
-\usepackage{xspace}
-%% Allow multirow tables
-\usepackage{multirow}
-%% Using different font for the glyphs and emojis
-\usepackage{fontspec}
-%% No hyphenation between lines
-\usepackage[none]{hyphenat}
-%% Document Language
-%%%\usepackage[portuguese]{babel}
+% -- Encoding UTF-8 without BOM
+% -- XeLaTeX => PDF (BIBER)
 
-% HEADER
-\usepackage{fancyhdr}
-\renewcommand{\headrulewidth}{2pt}
+\documentclass[]{cv-style}          % Add 'print' as an option into the square bracket to remove colours from this template for printing.
+                                    % Add 'espanol' as an option into the square bracket to change the date format of the Last Updated Text
 
-% ALL PAGES STYLES
-\pagestyle{fancy}
-\lhead
-{
-	\textsc{\small Curriculum Vitae}
-}
+\sethyphenation[variant=british]{english}{} % Add words between the {} to avoid them to be cut
 
-\rhead
-{
-	\textbf{\today}
-}
-
-% FIRST PAGE STYLE
-\fancypagestyle{firstpage}
-{
-	\pagestyle{fancy}
-	\lhead
-	{
-		\textsc{\small Curriculum Vitae}
-		\\
-		\textbf{\Huge Your Name}
-	}
-
-	\rhead
-	{
-		\textbf{\today}
-		\\
-		\textsc{{\fontspec{FiraCode Nerd Font}} Your City, Your Country}
-	}
-}
-
-% FOOTER
-\renewcommand{\footrulewidth}{1pt}
-\pagenumbering{gobble}
-
-% SECTIONS STYLE
-\titleformat{\section}[frame]{}{}{10pt}{\Large\bf\filcenter}
-%\titleformat{\section}{}{}{10pt}{\Large\bf\filcenter}[{\titlerule[1pt]}]
-
-% MACROS
-\newcommand{\latex}{\LaTeX\xspace}
-
-\newcommand{\timeentry}[4]
-{
-	\begin{tabular}{ c | l  }
-		\multirow{2}{0.2\linewidth}{\textsc{#1}} & {\bf#2} \\
-						 & \textit{#3} \footnotesize{#4}
-	\end{tabular}
-}
-
-\newcommand{\simpleentry}[2]
-{
-	\begin{tabular}{m{0.2\linewidth} | m{0.75\linewidth} }
-		\textsc{#1} & #2
-	\end{tabular}
-}
-
-% DOCUMENT
 \begin{document}
 
-	\thispagestyle{firstpage}
-	\section{Contact}
-	{\fontspec{FiraCode Nerd Font}} E-mail: \href{mailto:your@email.com}{your@email.com}
-	\\
-	{\fontspec{FiraCode Nerd Font}} Phone: +000 000 000 000
-	\\
-	{\fontspec{FiraCode Nerd Font}爵} Website: \href{https://yourwebsite.com}{yourwebsite.com}
+\header{Firstname}{Lastname}           % Your name
+% \lastupdated
 
-	\section{Education}
-	\timeentry{2000-Now}{Course 2}{Institution}{}
-	\\
-	\timeentry{1970-2000}{Course 1}{Institution}{}
+%----------------------------------------------------------------------------------------
+%	SIDEBAR SECTION  -- In the aside, each new line forces a line break
+%----------------------------------------------------------------------------------------
 
-	\section{Languages}
-	\simpleentry{Human}{English}
-	\\
-	\simpleentry{Machine}{Python, HTML, CSS, {\latex}, etc...}
+\begin{aside}
+%
+\photo{./images/photo.png}
+%
+\section{contact}
+City, State
+Country
+~
+\textbf{Email}
+email@example.com
+~
+\textbf{Phone}
++XXXXXXXXX
+~
+\textbf{Website}
+\url{website.com}
+~
+\textbf{Github}
+username
+%
+\section{languages}
+English (Native)
+%
+\section{other activities}
+Interests
+%
+\end{aside}
 
-	\section{Skills}
-	Some simple text explaining some of your skills like {\latex}.
+%----------------------------------------------------------------------------------------
+%	SKILLS SECTION
+%----------------------------------------------------------------------------------------
 
-	\newpage
-	\section{Hobbies}
-	Describe your hobbies or put the in a entry like below.
-	\\
-	\\
-	\timeentry{1970-Now}{Some hobby}{In this location}{with this person}
+\section{about me}
+A brief introduction
 
-	\section{Courses}
-	\timeentry{1970}{Some Course}{At this location}{with this trainer}
+\section{skills}
+  \vspace{-0.2cm}
+Your skills
 
-	\section{Misc}
-	\timeentry{1970-2000}{Driving License}{At this school}{with this instructor}
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{experience}
+
+\begin{entrylist}
+%------------------------------------------------
+\entry
+  {1970--Now}
+  {Company}
+  {City, State, Country}
+  {\jobtitle{Job Title}\\
+  \begin{itemize}
+    \item Responsibilities
+  \end{itemize}
+  \vspace{\parsep}
+  \textbf{Key Achievements}:  Achievements;}
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{education}
+
+\begin{entrylist}
+%------------------------------------------------
+\entry
+{1970--Now}
+{M.Sc. {\normalfont in Field of Study}}
+{Institution}
+{GPA: 4.0}
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	OTHER QUALIFICATIONS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{other qualifications}
+
+\begin{entrylist}
+%------------------------------------------------
+\entry
+{1970}
+{Role}
+{Institution}
+{\vspace{-0.3cm}}
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{awards}
+
+\begin{entrylist}
+%------------------------------------------------
+\entry
+{2014}
+{Award name}
+{Institution}
+{Award description. Award description. Award description. Award description. Award description. Award description. Award description. }
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{interests}
+  \vspace{-0.2cm}
+
+\begin{entrylist}
+%------------------------------------------------
+\entry
+{1970--Now}
+{Sport}
+{Association}
+{\vspace{-0.3cm}}
+%------------------------------------------------
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
 
 \end{document}

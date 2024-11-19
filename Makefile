@@ -3,11 +3,9 @@ TEMPLATE = template.tex
 CV = cv.tex
 COMPILER = xelatex
 
-all: clean cv.tex
+all: 
+	${COMPILER} ${CV}
 	${COMPILER} ${CV}
 
 clean:
 	rm -rf ${OUTPUT}
-
-cv.tex:
-	cp ${TEMPLATE} ${CV}
